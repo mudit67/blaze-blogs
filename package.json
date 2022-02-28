@@ -19,5 +19,8 @@
   "homepage": "https://github.com/mudit67/blaze-blogs#readme",
   "devDependencies": {
     "json-server": "^0.17.0"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
   }
 }
