@@ -1,16 +1,22 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 8000;
 
 // const getDB = require("./models/getDB").getDB;
 
-const fetchData = require('./controller/fetchData').fetchData;
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
+
+// app.use(bodyParser.json({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const fetchData = require("./controller/fetchData").fetchData;
+const appendData = require("./controller/appendData").appendData;
 
 app.get("/fetchAll", fetchData);
 
-// app.post("/append", (req,res) => {
-
-// });
+app.post("/append",bodyParser.json(), appendData);
 
 app.use("/", (req, res) => {
   res.send("Hello World!");
