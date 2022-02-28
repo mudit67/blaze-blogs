@@ -1,0 +1,22 @@
+{
+  "name": "blaze-blogs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mudit67/blaze-blogs.git"
+  },
+  "author": "Daksh Gautum Kushagra Agarwal Mudit Bhardwaj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mudit67/blaze-blogs/issues"
+  },
+  "homepage": "https://github.com/mudit67/blaze-blogs#readme",
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  }
+}
