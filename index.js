@@ -1,8 +1,13 @@
 // Imports
 const express = require("express");
 const bodyParser = require("body-parser");
+// const dbClient = require("mongodb").MongoClient; 
+// require('dotenv').config();
+
+
 
 // constants for the entire app
+// const uri = process.env.DB_URI;
 const app = express();
 const port = 8000;
 
@@ -34,3 +39,7 @@ app.use("/", (req, res) => {
 app.listen(port, () => {
   console.log(`server listening on port ${port}`);
 });
+
+// Database setup
+// const client = new dbClient(uri);
+// client.connect();
