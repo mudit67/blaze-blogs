@@ -1,13 +1,11 @@
 // Imports
 const express = require("express");
 const bodyParser = require("body-parser");
-// const dbClient = require("mongodb").MongoClient; 
-// require('dotenv').config();
-
-
+const moongoose = require("mongoose");
+require("dotenv").config();
 
 // constants for the entire app
-// const uri = process.env.DB_URI;
+const uri = process.env.DB_URI;
 const app = express();
 const port = 8000;
 
@@ -15,31 +13,37 @@ const port = 8000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Controllers
+const addBlog = require('./controller/addBlog');
 const fetchData = require("./controller/fetchData").fetchData;
 const appendData = require("./controller/appendData").appendData;
-const delData = require('./controller/delData').delData;
-const updateData = require('./controller/updateData').updateData;
-
+const delData = require("./controller/delData").delData;
+const updateData = require("./controller/updateData").updateData;
 
 // Routes
 app.get("/fetchAll", fetchData);
 
-app.post("/append",bodyParser.json(), appendData);
+app.post("/append", bodyParser.json(), appendData);
 
-app.delete('/del', delData)
+app.post('/addBlog', bodyParser.json(),addBlog);
 
-app.patch('/update', updateData);
+app.delete("/del", delData);
+
+app.patch("/update", updateData);
 
 app.use("/", (req, res) => {
   res.send("Hello World!");
 });
 
-
-// Server
-app.listen(port, () => {
-  console.log(`server listening on port ${port}`);
-});
-
-// Database setup
-// const client = new dbClient(uri);
-// client.connect();
+// Connect to Database
+moongoose
+  .connect(uri)
+  .then(() => {
+    console.log("Database connection established!");
+    // Server
+    app.listen(port, () => {
+      console.log(`server listening on port ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
