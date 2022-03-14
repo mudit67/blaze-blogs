@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 const addBlog = require('./controller/addBlog');
 const delBlog = require("./controller/delBlog");
 const updateBlog = require("./controller/updateBlog");
-const getBlog = require('./controller/getBlog').fetchBlog;
+const getBlog = require('./controller/getBlog');
 const fetchData = require("./controller/fetchData").fetchData;
 const appendData = require("./controller/appendData").appendData;
 const delData = require("./controller/delData").delData;
@@ -28,7 +28,8 @@ app.get("/fetchAll", fetchData);
 app.post("/append", bodyParser.json(), appendData);
 
 app.post('/addBlog', bodyParser.json(),addBlog);
-app.get('/getBlog',getBlog);
+app.get('/getBlog',getBlog.fetchBlog);
+app.get('/getRecent', getBlog.fetchRecent);
 app.delete('/delBlog', delBlog);
 app.patch('/updateBlog',bodyParser.json(), updateBlog);
 
@@ -36,9 +37,9 @@ app.delete("/del", delData);
 
 app.patch("/update", updateData);
 
-app.use("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.use("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
 // Connect to Database
 moongoose

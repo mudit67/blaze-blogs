@@ -1,7 +1,6 @@
 const Blog = require("../models/blogs");
 
 exports.fetchBlog = async function (req, res) {
-  console.log(req.query);
   if (req.query.id) {
     let blogMatch;
     try {
@@ -9,7 +8,6 @@ exports.fetchBlog = async function (req, res) {
         blogMatch = await Blog.findById(req.query.id).exec();
       } else {
       }
-      // console.log(await Blog.findOne({_id: req.}))
     } catch (err) {
       res.status(500).send(err);
       return;
@@ -43,5 +41,24 @@ exports.fetchBlog = async function (req, res) {
     }
   } else {
     res.status(400).send();
+  }
+};
+
+exports.fetchRecent = async function (req, res) {
+  let blogMatch;
+  try {
+    let limit = 8;
+    if (req.query.l) {
+      limit = req.query.l;
+    }
+    blogMatch = await Blog.find().limit(limit).sort("-postDate").exec();
+  } catch (err) {
+    res.status(500).send(err);
+    return;
+  }
+  if (!blogMatch) {
+    res.status(404).send("blogs not found!");
+  } else {
+    res.status(200).send(JSON.stringify(blogMatch));
   }
 };
