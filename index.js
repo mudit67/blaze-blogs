@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 // Controllers
 const addBlog = require('./controller/addBlog');
 const delBlog = require("./controller/delBlog");
+const updateBlog = require("./controller/updateBlog");
 const getBlog = require('./controller/getBlog').fetchBlog;
 const fetchData = require("./controller/fetchData").fetchData;
 const appendData = require("./controller/appendData").appendData;
@@ -29,6 +30,7 @@ app.post("/append", bodyParser.json(), appendData);
 app.post('/addBlog', bodyParser.json(),addBlog);
 app.get('/getBlog',getBlog);
 app.delete('/delBlog', delBlog);
+app.patch('/updateBlog',bodyParser.json(), updateBlog);
 
 app.delete("/del", delData);
 
