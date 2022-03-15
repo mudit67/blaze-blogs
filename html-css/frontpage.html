@@ -1,0 +1,194 @@
+<!DOCTYPE html5>
+<html>
+   <title>Blazeblogs</title>
+<meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+   :root{    
+      --light:#0f0e17;
+      --secondary:#e53170;
+      --dark:#fffffe;
+      --primary-color:#fffffe;
+      --secondary-color:#f25f4c;
+      --border:#e9ecef;   }
+   .navbar{
+      position: relative;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
+      padding: 35px;
+ }
+   body{
+      padding: 0;
+      margin: 0;
+      background-color: #0f0e17;
+      /* background-image:url("https://wallpaperaccess.com/full/1092758.jpg"); */}
+   a{
+      text-decoration: none;}
+   .text-light{
+      color:var(--light);}
+   .text-secondary{
+      color:var(--secondary);}
+   .text-dark{
+      color:var(--dark); }
+   .text-primary{
+      color:var(--primary-color);  }
+   .bg-light{
+      background-color: var(--light); }
+   .container{
+      padding: 30px 20px;
+      margin:0px;   }  
+   .nav-brand {
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: bold;
+      align-self: center;
+      font-size: 35px;}
+   .collapse{
+      align-self:center;}
+   .nav-link{
+      font-size:30px;
+      margin: 12px;
+      color: var(--dark);
+      font-family: 'Courier New', Courier, monospace;   }
+   .nav-link:hover{
+      color:var(--primary-color);   }
+   .navbar-nav{font-size:25px;
+      font-weight: bold;
+      font-style: bold;
+      font-family: sans-serif;
+      margin-left:0px;}
+   .toggle-button{
+   font-size:21px;
+   background-color:transparent;
+   border:none;
+   position:absolute;
+   left:0;
+   margin:8px 10px;
+   display:none;}
+   .toggle-button:focus{
+   outline:none;}
+   h2{display:block;
+    font-size: 40px;
+    margin-block-start: 0.83rem;
+    margin-block-end: 0.83rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+color:#fffffe;}  
+p{font-size:larger;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align:center;
+   color:#a7a9be;}
+@media(max-width:1100px){
+   .navbar{
+      flex-direction: column;
+      margin:0px 10px;
+   }
+   .collapse{margin: 10px 0px;}
+}
+@media(max-width:500px){
+   .toggle-button{display:initial;
+   }
+   .collapse{
+      max-height:0;
+      overflow:hidden;
+      display:none;
+      transition:all 1s ease-in;
+   }
+   .collapse-toggle{max-height:500px;display:initial;
+   }}
+ @media(max-width:699px){
+.collapse .nav-link{
+   display:block;
+   text-align:center;
+   margin:10px 1px;}}
+.create{ 
+   text-align:center;
+   display:inline-block;
+   border-radius: 10px;
+   text-transform:uppercase;
+   font-family: sans-serif;
+   color:#fffffe ; 
+   padding:10px;
+   background-color: #ff8906;
+   font-size: 10px;
+   }
+.site-main{text-align:center;}
+.para1{padding-left:20%;
+   padding-right:20%;}
+.para2{padding-left:20%;
+   padding-right:20%;
+   color:#0f0e17;}
+</style>
+</head>
+<body>
+<header id="header" class="shadow bg-light">
+   <nav class="container navbar">
+<a href="frontpage.html" class="nav-brand text-dark">Blazeblogs</a>
+<button class="toggle-button">|||</button>
+<!--<div class="collapse">
+   <ui class="navbar-nav">
+    <a href="frontpage.html" class="nav-link">HOME</a>
+    <a href="#" class="nav-link">BLOGS</a>
+    <a href="#" class="nav-link">ABOUT</a>
+    <a href="#" class="nav-link">CONTACT</a>
+   </ui>
+</div>-->
+<div class="collapse"><ui class="navbar-nav"><div class="login" style="right:20px;">
+ <a href="#" style="color:#fffffe">LOGIN</a>  
+</div></ui></div>
+</nav></header>
+<main class="site-main" style="padding-bottom: 20px;">
+   <h2 id="h2">Express the creativity inside you</h2>
+   <p id="p">Create your own blog. It's easy and free.</p>
+   <a href="createblogs.html" class="create">Create your own Blog!</a>
+</main>
+<section style="padding:100px;">
+   <div style="background-color: #e9ecef; padding:70px; padding-bottom:20px;">
+<h style="color:#0f0e17; text-align:center;display:block;font-size: 40px;margin-block-start: 0.83rem; margin-block-end: 0.83rem;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;">Explore more about blogs and blogging!</h>
+<p style="color:#0f0e17;text-align: center;">Table of contents:</p>
+<div style="display: -ms-grid;display: grid;grid-auto-columns: 1fr;grid-column-gap: 2rem;grid-row-gap: 2rem;-ms-grid-columns: 1fr 1fr 1fr 1fr;grid-template-columns: 1fr 1fr 1fr 1fr;-ms-grid-rows: auto auto auto auto;grid-template-rows: auto auto auto auto;">
+<div style="text-align:center;background-color:#0f0e17; color:#e9ecef; padding:20px;"><h>How to create a blog?</h></div>
+<div style="text-align:center;background-color:#0f0e17; color:#e9ecef; padding:20px;"><h>What is the purpose of a blog?</h></div>
+<div style="text-align:center;background-color:#0f0e17; color:#e9ecef; padding:20px;"><h>What is blogging?</h></div>
+<div style="text-align:center;background-color:#0f0e17; color:#e9ecef; padding:20px;"><h>Who is a blogger??</h></div>
+</div>
+</div>
+</section>
+<section style="padding:100px; padding-top:20px;">
+   <div style="padding-bottom: 100px;">
+      <h style="display:block;font-size: 40px;margin-block-start: 0.83rem; margin-block-end: 0.83rem;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;color: var(--dark);text-align:center;">What is a blog?</h>
+      <p class="para1">If you don’t, then you’ve come to the right place. In 1994, when blogs began, a blog was more of a personal diary that people shared online. In this online journal, you could talk about your daily life or share about things that you were doing. Then, people saw an opportunity to communicate information in a new way online. Thus began the beautiful world of blogging.</p>
+      <p class="para1">A blog (a shortened version of “weblog”) is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top. It is a platform where a writer or a group of writers share their views on an individual subject.</p>
+   </div>
+   <div style="background-color: #e9ecef;padding-bottom: 100px;">
+      <h style="display:block; font-size: 40px; margin-block-start: 0.83rem; margin-block-end: 0.83rem; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;;text-align:center;padding-top:100px;">What is the purpose of a blog?</h>
+       <p class="para2">There are many reasons to start a blog for personal use and only a handful of strong ones for business blogging. Blogging for business, projects, or anything else that might bring you money has a very straightforward purpose – to rank your website higher in Google SERPs, a.k.a. increase your visibility.</p>
+       <p class="para2">As a business, you rely on consumers to keep buying your products and services. As a new business, you rely on blogging to help you get to potential consumers and grab their attention. Without blogging, your website would remain invisible, whereas running a blog makes you searchable and competitive.</p>
+       <p class="para2">So, the main purpose of a blog is to connect you to the relevant audience. Another one is to boost your traffic and send quality leads to your website.</p>
+       <P class="para2">The more frequent and better your blog posts are, the higher the chances for your website to get discovered and visited by your target audience. This means that a blog is an effective lead generation tool. Add a great call to action (CTA) to your content, and it will convert your website traffic into high-quality leads. A blog also allows you to showcase your niche authority and build a brand.</P>
+       <p class="para2">When you use your niche knowledge for creating informative and engaging posts, it builds trust with your audience. Great blogging makes your business look more credible, which is especially important if your brand is still young and fairly unknown. It ensures presence online and niche authority at the same time.</p>
+   </div>
+   <div style="padding-bottom: 100px;">   
+      <h style="display:block; font-size: 40px; margin-block-start: 0.83rem; margin-block-end: 0.83rem; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold; color: var(--dark);text-align:center;padding-top:100px;">What is blogging?</h>
+       <p class="para1">In the early 2000s, blogging emerged in a variety of forms when several political blogs were born. Blogs with how-to manuals also began to appear. Established institutions began to note the difference between journalism and blogging.</p>
+       <p class="para1">By definition, Blogging is a collection of skills that one needs to run and supervise a blog. This entails equipping a web page with tools to make the process of writing, posting, linking, and sharing content easier on the internet.</p>
+   </div>
+       <div style="background-color: #e9ecef;padding-bottom: 100px;">    
+       <h style="display:block; font-size: 40px; margin-block-start: 0.83rem; margin-block-end: 0.83rem; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;text-align:center;padding-top:100px;">Who is a blogger?</h> 
+       <p class="para2">In recent times, bloggers have become famous for various reasons. Blogging has become an alternative career or side gig for many. Seeing this, even more, people are choosing to join the blogging ranks.</p>
+       <p class="para2">So who are bloggers? Bloggers are individuals who love sharing parts of their lives with you. They post on various topics from arts, home designs, carpentry, and finance articles. Bloggers are mobile and don’t need to be in one place. They live on the internet!</p>
+       <p class="para2">By definition, a blogger is someone who runs and controls a blog. He or she shares his or her opinion and knowledge on different topics for a target audience.</p>
+   </div>
+</section>
+<script src="event.js"></script>
+    </body>
+    </html>
