@@ -13,24 +13,26 @@ input[type=text], input[type=password] {
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  border: none;
-  background: #0f0e17;
+  border: solid 2px #888;
+  border-radius: 48px;
+  background:#e9ecef;
 }
 /* Add a background color when the inputs get focus */
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
+  border: solid 3px #0f0e17;
 }
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
+  background-color: #f25f4c;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 50%;
+  width: 100%;
   opacity:0.9;
 }
 
@@ -41,7 +43,7 @@ button:hover {
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
-  background-color: #f44336;
+  background-color: #e53170;
 }
 .cancelbtn, .signupbtn  {
     float:left; 
@@ -73,7 +75,7 @@ span.psw {
 .modal-content {
   background-color: #fefefe;
   margin: 5% 30% 15% 30%; /* 5% from the top, 15% from the bottom and centered */
-  border: 2px solid #888;
+  border: 2px solid #0f0e17;
   width: 40%; /* Could be more or less, depending on screen size */
 }
 /* Style the horizontal ruler */
