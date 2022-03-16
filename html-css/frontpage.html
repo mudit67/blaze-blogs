@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+   html{scroll-snap-type: y mandatory;}
+   section{scroll-snap-align: start;}
    :root{    
       --light:#0f0e17;
       --secondary:#e53170;
@@ -131,10 +133,14 @@ p{font-size:larger;
    text-align:center;
    background-color:#0f0e17;
    color:#e9ecef;
-   padding:20px;}
+   padding:20px;
+   padding-left: 0%;
+   padding-right: 0%;
+   border-radius:10px;}
 </style>
 </head>
 <body>
+   <section>
 <header id="header" class="shadow bg-light">
    <nav class="container navbar">
 <a href="frontpage.html" class="nav-brand text-dark">Blazeblogs</a>
@@ -151,12 +157,12 @@ p{font-size:larger;
  <a href="login-page.html" style="color:#fffffe">LOGIN</a>  
 </div></ui></div>
 </nav></header>
-<main class="site-main" style="padding-bottom: 20px;">
+<main class="site-main" style="padding-bottom: 100px;">
    <h2 id="h2">Express the creativity inside you</h2>
    <p id="p">Create your own blog. It's easy and free.</p>
    <a href="createblogs.html" class="create">Create your own Blog!</a>
-</main>
-<section style="padding-top:100px;">
+</main></section>
+<section>
    <div style="background-color: #e9ecef; padding:70px; padding-bottom:20px;">
 <h style="color:#0f0e17; text-align:center;display:block;font-size: 40px;margin-block-start: 0.83rem; margin-block-end: 0.83rem;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;">Explore more about blogs and blogging!</h>
 <p style="color:#0f0e17;text-align: center;">Table of contents:</p>
@@ -175,7 +181,7 @@ p{font-size:larger;
       <p class="para1">A blog (a shortened version of “weblog”) is an online journal or informational website displaying information in reverse chronological order, with the latest posts appearing first, at the top. It is a platform where a writer or a group of writers share their views on an individual subject.</p>
    </div>
 </section>
-<section id="What is the purpose of a blog?" style="padding-top:20px;">
+<section id="What is the purpose of a blog?">
    <div style="background-color: #e9ecef;padding-bottom: 100px;">
       <h style="display:block; font-size: 40px; margin-block-start: 0.83rem; margin-block-end: 0.83rem; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;;text-align:center;padding-top:100px;">What is the purpose of a blog?</h>
        <p class="para2">There are many reasons to start a blog for personal use and only a handful of strong ones for business blogging. Blogging for business, projects, or anything else that might bring you money has a very straightforward purpose – to rank your website higher in Google SERPs, a.k.a. increase your visibility.</p>
@@ -201,5 +207,16 @@ p{font-size:larger;
    </div>
 </section>
 <script src="event.js"></script>
+<script>const gra = function(min, max) {
+   return Math.random() * (max - min) + min;
+}
+const init = function(){
+ let items = document.querySelectorAll('section');
+ for (let i = 0; i < items.length; i++){
+   items[i].style.background = randomColor({luminosity: 'light'});
+ }
+ cssScrollSnapPolyfill()
+}
+init();</script>
     </body>
     </html>
