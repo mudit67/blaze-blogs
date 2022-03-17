@@ -10,36 +10,15 @@ const app = express();
 const port = 8000;
 
 // body parser to decode the body of the incomings requests
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// Controllers
-const addBlog = require('./controller/addBlog');
-const delBlog = require("./controller/delBlog");
-const updateBlog = require("./controller/updateBlog");
-const getBlog = require('./controller/getBlog');
-const fetchData = require("./controller/fetchData").fetchData;
-const appendData = require("./controller/appendData").appendData;
-const delData = require("./controller/delData").delData;
-const updateData = require("./controller/updateData").updateData;
+// Router imports
+const apiRoutes = require('./routes/apiRoutes');
+const pageRoutes = require('./routes/pageRoutes');
 
 // Routes
-app.get("/fetchAll", fetchData);
+app.use(apiRoutes);
+app.use(pageRoutes);
 
-app.post("/append", bodyParser.json(), appendData);
-
-app.post('/addBlog', bodyParser.json(),addBlog);
-app.get('/getBlog',getBlog.fetchBlog);
-app.get('/getRecent', getBlog.fetchRecent);
-app.delete('/delBlog', delBlog);
-app.patch('/updateBlog',bodyParser.json(), updateBlog);
-
-app.delete("/del", delData);
-
-app.patch("/update", updateData);
-
-// app.use("/", (req, res) => {
-//   res.send("Hello World!");
-// });
 
 // Connect to Database
 moongoose
