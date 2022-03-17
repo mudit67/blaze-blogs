@@ -70,6 +70,11 @@ span.psw {
   background-color: #0f0e17; /* Fallback color */
   padding-top: 50px;
 }
+.tab{display:none;
+}
+input.invalid {
+  background-color: #ffdddd;
+}
 
 /* Modal Content/Box */
 .modal-content {
@@ -93,29 +98,69 @@ hr {
 </style>
 </head>
 <body>
-<div id="id01" class="modal">  
-  <form class="modal-content" action="/action_page.php" method="post">
+<div class="modal">  
+  <form id="regForm" class="modal-content" action="/action_page.php" method="post">
     <div class="container">
         <h1>Login</h1>
         <p>Please fill this form to login to your account.</p>
       <hr>
-        <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-
+    <div class="tab">
+      <label for="email"><b>Email</b></label>
+      <input oninput="this.className = ''" type="text" placeholder="Enter Email" name="email" required>
+    </div>
+    
+    <div class="tab">
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input oninput="this.className = ''" type="password" placeholder="Enter Password" name="psw" required>
+    </div>      
       
-      <label>
+    <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:25px"> Remember me
-      </label>
-      <span class="psw"><a href="signup-page.html"  position:relative; padding-top:0px;">Wanna sign up instead?</a></span>
+    </label>
+    <span class="psw"><a href="signup-page.html">Already have an account? Sign in</a></span>
     <div class="clearfix">
-        <button type="button" class="cancelbtn" onclick="location.href='frontpage.html'">Cancel</button>
-        
-        <button type="submit" class="signupbtn">Login</button>
+    <button type="button" class="cancelbtn" onclick="location.href='frontpage.html'">Cancel</button>
+    <button type="button" class="signupbtn" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
 </div>
   </form>
 </div>
+<script>
+var currentTab = 0; 
+showTab(currentTab); 
+function showTab(n) {
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+}
+function nextPrev(n) {
+  var x = document.getElementsByClassName("tab");
+  if (n == 1 && !validateForm()) return false;
+  x[currentTab].style.display = "none";
+  currentTab = currentTab + n;
+  if (currentTab >= x.length) {
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  showTab(currentTab);
+}
+function validateForm() {
+  // Ab yaha pe tu dekh liyo entry valid kaise krni h
+/*sample code for validation bss empty entry check krne k liye */
+var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  for (i = 0; i < y.length; i++) {
+    if (y[i].value == "") {
+      y[i].className += " invalid";
+      valid = false;
+    }
+  }return(valid);
+}
+</script>
 </body>
 </html>
