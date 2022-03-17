@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-   html{scroll-snap-type: y mandatory;}
+   html{scroll-snap-type: y mandatory;
+   scroll-behavior: smooth;}
    section{scroll-snap-align: start;}
    :root{    
       --light:#0f0e17;
@@ -66,7 +67,8 @@
    position:absolute;
    left:0;
    margin:8px 10px;
-   display:none;}
+   display:none;
+rotate:deg(90);}
    .toggle-button:focus{
    outline:none;}
    h2{display:block;
@@ -94,9 +96,13 @@ p{font-size:larger;
       flex-direction: column;
       margin:0px 10px;
    }
-   .collapse{margin: 10px 0px;}
-}
-@media(max-width:500px){
+   .collapse{margin: 10px 0px;
+   max-height:0;
+   overflow:hidden;
+      display:none;
+   }}
+
+@media(max-width:1000px){
    .toggle-button{display:initial;
    }
    .collapse{
@@ -167,10 +173,10 @@ p{font-size:larger;
 <h style="color:#0f0e17; text-align:center;display:block;font-size: 40px;margin-block-start: 0.83rem; margin-block-end: 0.83rem;margin-inline-start: 0px;margin-inline-end: 0px;font-weight: bold;">Explore more about blogs and blogging!</h>
 <p style="color:#0f0e17;text-align: center;">Table of contents:</p>
 <div style="display: -ms-grid;display: grid;grid-auto-columns: 1fr;grid-column-gap: 2rem;grid-row-gap: 2rem;-ms-grid-columns: 1fr 1fr 1fr 1fr;grid-template-columns: 1fr 1fr 1fr 1fr;-ms-grid-rows: auto auto auto auto;grid-template-rows: auto auto auto auto;">
-<button type="button" class="menu-buttons" onclick="location.href='#What is a blog?'">What is a blog?</button>
-<button type="button" class="menu-buttons" onclick="location.href='#What is the purpose of a blog?'">What is the purpose of a blog?</button>
-<button type="button" class="menu-buttons" onclick="location.href='#What is blogging?'">What is blogging?</button>
-<button type="button" class="menu-buttons" onclick="location.href='#Who is a blogger?'">Who is a blogger?</button>
+<button type="button" class="menu-buttons" onClick="document.getElementById('What is a blog?').scrollIntoView();">What is a blog?</button>
+<button type="button" class="menu-buttons" onClick="document.getElementById('What is the purpose of a blog?').scrollIntoView();">What is the purpose of a blog?</button>
+<button type="button" class="menu-buttons" onClick="document.getElementById('What is blogging?').scrollIntoView();">What is blogging?</button>
+<button type="button" class="menu-buttons" onClick="document.getElementById('Who is a blogger?').scrollIntoView();">Who is a blogger?</button>
 </div>
 </div>
 </section>
