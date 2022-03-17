@@ -3,6 +3,7 @@
 <title>Blaze-signup</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -109,17 +110,20 @@ span.psw {
 
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
-
+<div>
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
+      <input type="password" placeholder="Enter Password" name="psw" required="" id="id_password">
+      <i class="far fa-eye" id="togglePassword" style="z-index:2; position:relative; float:right; margin-top:-55px; margin-right:15px;"></i><br>
+</div>
+<div>
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-      
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required="" id="id_password1">
+      <i class="far fa-eye" id="togglePassword1" style="z-index:2; position:relative; float:right; margin-top:-55px; margin-right:15px;"></i><br>     
+    </div>
       <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">Remember me
       </label>
-      <span class="psw"><a href="login-page.html"  position:relative; padding-top:0px;">Wanna login instead?</a></span>
+      <span class="psw"><a href="login-page.html">Wanna login instead?</a></span>
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
@@ -129,5 +133,27 @@ span.psw {
     </div>
   </form>
 </div>
+<script>
+  const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+ 
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+const togglePassword1 = document.querySelector('#togglePassword1');
+  const password1 = document.querySelector('#id_password1');
+ 
+  togglePassword1.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password1.getAttribute('type') === 'password' ? 'text' : 'password';
+    password1.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+</script>
 </body>
 </html>
