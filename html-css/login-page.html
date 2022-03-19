@@ -49,8 +49,9 @@ button:hover {
     float:left; 
     width: 50%;     
   }
-.container {
+.container {z-index:1; overflow:hidden;
   padding: 46px;
+  border:thick #0f0e17 2px;
 }
 
 span.psw {
@@ -59,21 +60,30 @@ span.psw {
 
 /* The Modal (background) */
 .modal {
-  display: initial; /* Hidden by default */
+ display: initial; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: #0f0e17; /* Fallback color */
-  padding-top: 50px;
+  padding-top: 0px;
 }
-.tab{display:none;
+.tab{display:flex;
+  position:relative;
+  transition:all 0.6s linear;
+  -webkit-transition:all 0.6s linear;
+  left:-640px;
+  box-sizing:border-box;
+  overflow:hidden;
+  z-index:2;
+  width:100%;
+  flex-wrap:wrap;
 }
 input.invalid {
-  background-color: #ffdddd;
+  background-color: #811b1b;
 }
 
 /* Modal Content/Box */
@@ -95,6 +105,21 @@ hr {
   clear: both;
   display: table;
 }
+#current{z-index:4;
+  position:relative;
+  left:0px;
+  opacity:1;
+  flex-wrap:wrap;
+  width:100%;
+  flex-shrink: 0;
+}
+#next{z-index:3;
+  position:relative;
+  left:640px;
+  flex-wrap:wrap;
+  width:100%;
+  flex-shrink:0;
+}
 </style>
 </head>
 <body>
@@ -104,16 +129,17 @@ hr {
         <h1>Login</h1>
         <p>Please fill this form to login to your account.</p>
       <hr>
+      <div style="display:flex;">
     <div class="tab">
       <label for="email"><b>Email</b></label>
       <input oninput="this.className = ''" type="text" placeholder="Enter Email" name="email" required>
     </div>
     
-    <div class="tab">
+    <div class="tab" id="next">
       <label for="psw"><b>Password</b></label>
       <input oninput="this.className = ''" type="password" placeholder="Enter Password" name="psw" required>
     </div>      
-      
+      </div>
     <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:25px"> Remember me
     </label>
@@ -125,12 +151,43 @@ hr {
 </div>
   </form>
 </div>
+<!--
 <script>
-var currentTab = 0; 
+var currentTab=0;
+function validateForm() {
+  // Ab yaha pe tu dekh liyo entry valid kaise krni h
+/*sample code for validation bss empty entry check krne k liye */
+var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  for (i = 0; i < y.length; i++) {
+    if (y[i].value == "") {
+      y[i].className += " invalid";
+      valid = false;
+    }
+  }return(valid);
+}
+if(validateForm()==true){
+  document.querySelector(document).ready(function(){
+ 
+  
+ //Dynamic Next
+document.querySelector(".signupbtn").addEventListener("click", function(){
+  nextStep = document.querySelector("#" + document.querySelector(this).parents(".slider-step").data("nextStep"));
+  document.querySelector(this).parents(".slider-step").setAttribute("data-anim","hide-to--left");
+  nextStep.setAttribute("data-anim","show-from--right");
+});
+})
+
+}
+</script>-->
+<script>
+ var currentTab = 0; 
 showTab(currentTab); 
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
+  x[currentTab].id="current";
+  x[currentTab].style.display="flex"; 
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
@@ -140,7 +197,8 @@ function showTab(n) {
 function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
   if (n == 1 && !validateForm()) return false;
-  x[currentTab].style.display = "none";
+  x[currentTab].className="tab";
+  x[currentTab].id="";
   currentTab = currentTab + n;
   if (currentTab >= x.length) {
     document.getElementById("regForm").submit();
