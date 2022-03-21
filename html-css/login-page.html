@@ -4,6 +4,7 @@
 <title>Blaze-login</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
@@ -73,8 +74,8 @@ span.psw {
 }
 .tab{display:flex;
   position:relative;
-  transition:all 0.6s linear;
-  -webkit-transition:all 0.6s linear;
+  transition:all 0.3s linear;
+  -webkit-transition:all 0.3s linear;
   left:-640px;
   box-sizing:border-box;
   overflow:hidden;
@@ -89,9 +90,9 @@ input.invalid {
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% 30% 15% 30%; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% 32% 15% 32%; /* 5% from the top, 15% from the bottom and centered */
   border: 2px solid #0f0e17;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 36%; /* Could be more or less, depending on screen size */
 }
 /* Style the horizontal ruler */
 hr {
@@ -105,7 +106,7 @@ hr {
   clear: both;
   display: table;
 }
-#current{z-index:4;
+#current{
   position:relative;
   left:0px;
   opacity:1;
@@ -120,6 +121,8 @@ hr {
   width:100%;
   flex-shrink:0;
 }
+
+.display{display:none;}
 </style>
 </head>
 <body>
@@ -135,11 +138,12 @@ hr {
       <input oninput="this.className = ''" type="text" placeholder="Enter Email" name="email" required>
     </div>
     
-    <div class="tab" id="next">
+    <div class="tab" id="next" style="display:inline-block;">
       <label for="psw"><b>Password</b></label>
-      <input oninput="this.className = ''" type="password" placeholder="Enter Password" name="psw" required>
-    </div>      
-      </div>
+      <input type="password" placeholder="Enter Password" name="psw" required="" id="id_password">
+      <i class="far fa-eye display" id="togglePassword" style="z-index:2; position:relative; float:right; margin-top:-55px; margin-right:15px;"></i>
+    </div>
+  </div> 
     <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:25px"> Remember me
     </label>
@@ -187,7 +191,6 @@ showTab(currentTab);
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
   x[currentTab].id="current";
-  x[currentTab].style.display="flex"; 
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
@@ -198,7 +201,8 @@ function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
   if (n == 1 && !validateForm()) return false;
   x[currentTab].className="tab";
-  x[currentTab].id="";
+  x[currentTab].id ="";
+  document.querySelector('#togglePassword').classList.remove("display");
   currentTab = currentTab + n;
   if (currentTab >= x.length) {
     document.getElementById("regForm").submit();
@@ -219,6 +223,16 @@ var x, y, i, valid = true;
     }
   }return(valid);
 }
+const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+ 
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
 </script>
 </body>
 </html>
